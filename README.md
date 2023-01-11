@@ -1,3 +1,4 @@
 # movie
-start npm: npm run dev
-start yarn: yarn run dev
+Start npm: npm run dev
+
+Start yarn: yarn run dev
