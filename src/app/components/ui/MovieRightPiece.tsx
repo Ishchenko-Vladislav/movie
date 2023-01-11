@@ -1,0 +1,68 @@
+import { AxiosResponse } from "axios";
+import React, { useEffect, useState } from "react";
+import { useMovieDb } from "../../hooks/useMovieDb";
+import { MovieItems } from "../../utilit/typesMovie";
+import { SortedBy } from "../pages/MoviePage";
+import { MovieItem } from "./MovieItem";
+import { GenresType } from "./poster/PosterLayout";
+type MovieRightPieceProps = {
+  sortBy: SortedBy | undefined;
+  selectedGenres: GenresType[];
+  selectedYears: number[];
+  getDiscoverMovie?: (
+    sortBy: string,
+    year: string,
+    genre: string,
+    page: string
+  ) => Promise<AxiosResponse<any, any>>;
+  getDiscoverTV?: (
+    sortBy: string,
+    year: string,
+    genre: string,
+    page: string
+  ) => Promise<AxiosResponse<any, any>>;
+  movie?: MovieItems[];
+  genres: GenresType[];
+  where: "tv" | "movie";
+};
+export const MovieRightPiece: React.FC<MovieRightPieceProps> = ({
+  sortBy,
+  selectedGenres,
+  selectedYears,
+  movie,
+  genres,
+  getDiscoverMovie,
+  where,
+}) => {
+  // const [genres, setGenres] = useState<GenresType[]>([]);
+
+  // const { getGenres } = useMovieDb();
+
+  // const genresHandler = async () => {
+  //   const f1 = await getGenres();
+  //   setGenres(f1.data.genres);
+  // };
+
+  // useEffect(() => {
+  //   genresHandler();
+  // }, []);
+  return (
+    <div>
+      <div>{}</div>
+      <div className="flex flex-wrap">
+        {movie?.length != 0 ? (
+          movie?.map((item) => (
+            <MovieItem
+              where={where}
+              genres={genres}
+              key={item.id}
+              item={item}
+            />
+          ))
+        ) : (
+          <div className="text-white text-lg text-center">Not Found</div>
+        )}
+      </div>
+    </div>
+  );
+};
