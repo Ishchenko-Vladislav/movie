@@ -6,6 +6,7 @@ import "./style.css";
 type PosterLayoutProps = {
   topRatedMovie: TopRatedMovie[];
   title: string;
+  where: string;
 };
 export type GenresType = {
   id: number;
@@ -14,6 +15,7 @@ export type GenresType = {
 export const PosterLayout: React.FC<PosterLayoutProps> = ({
   topRatedMovie,
   title,
+  where,
 }) => {
   const [genres, setGenres] = useState<GenresType[]>([]);
   const { getGenresMovie } = useMovieDb();
@@ -62,7 +64,12 @@ export const PosterLayout: React.FC<PosterLayoutProps> = ({
           className="no-scroll-bar flex flex-row w-full duration-150 scroll-smooth snap-mandatory snap-x overflow-x-scroll"
         >
           {topRatedMovie?.map((item) => (
-            <PosterItem genres={genres} key={item.id} item={item} />
+            <PosterItem
+              where={where}
+              genres={genres}
+              key={item.id}
+              item={item}
+            />
           ))}
         </div>
       </div>
