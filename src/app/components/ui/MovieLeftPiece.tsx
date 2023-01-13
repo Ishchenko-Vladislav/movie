@@ -104,7 +104,7 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
       </div>
       <div
         style={{ minWidth: 100 }}
-        className=" w-full shadow-my py-2 px-3 text-white rounded-lg select-none cursor-pointer my-4 relative"
+        className=" w-full sm:shadow-my shadow-none py-2 px-3 text-white rounded-lg select-none cursor-pointer my-4 relative"
       >
         <div
           onClick={() => setIsShowFilters(!isShowFilters)}
@@ -119,7 +119,7 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
         </div>
         {isShowFilters && (
           <div
-            className={`sm:relative relative w-[90vw] z-50 bg-[#2a2d35] px-4 sm:px-0`}
+            className={`sm:relative shadow-my sm:shadow-none relative w-[90vw] sm:w-full z-50 bg-[#2a2d35] px-4 sm:px-0`}
           >
             <div className="relative flex flex-wrap mt-4 pb-4 border-b-2 ">
               {genres?.map((item) => (
@@ -165,16 +165,19 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
           text-3xl 
           select-none
           cursor-pointer
-          p-10
-          bottom-[80%]
+          pt-10
+          bottom-[85%]
           flex
+          justify-center
           z-50
           w-full
-          bg-[rgba(0,0,0,0.2)]
+          bg-[rgba(0,0,0,0.4)]
           sm:hover:bg-[rgba(0,0,0,0.2)]
           sm:bg-transparent
-          sm:bottom-60
+          sm:bottom-0
           sm:flex-col
+          sm:p-10
+
           sm:w-[50px]"
         >
           <div>t</div>

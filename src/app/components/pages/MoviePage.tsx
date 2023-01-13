@@ -42,10 +42,10 @@ export const MoviePage = () => {
     ) {
       setIsFetching(true);
     }
-    if (e.target.documentElement.scrollTop >= window.innerHeight) {
+    if (e.target.documentElement.scrollTop >= window.innerHeight * 2) {
       setIsShowBack(true);
     }
-    if (e.target.documentElement.scrollTop <= window.innerHeight) {
+    if (e.target.documentElement.scrollTop <= window.innerHeight * 2) {
       setIsShowBack(false);
     }
   };
