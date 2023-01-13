@@ -11,7 +11,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div
       style={{ backgroundImage: `url(${ur})` }}
-      className={`w-[100%]  bg-gray-200 min-h-screen `}
+      className={`w-[100%]  bg-gray-200 min-h-screen overflow-hidden`}
     >
       <div
         className={`max-w-screen-xl m-auto bg-[#2a2d34] h-full flex flex-col px-2 pt-2 shadow-my2`}

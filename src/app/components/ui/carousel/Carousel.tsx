@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { MovieItems } from "../../../utilit/typesMovie";
 import { CarouselItem } from "./CarouselItem";
 type CarouselProps = {

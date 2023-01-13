@@ -102,10 +102,13 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
           </div>
         )}
       </div>
-      <div className=" w-full shadow-my py-2 px-3 text-white rounded-lg select-none cursor-pointer my-4 relative">
+      <div
+        style={{ minWidth: 100 }}
+        className=" w-full shadow-my py-2 px-3 text-white rounded-lg select-none cursor-pointer my-4 relative"
+      >
         <div
           onClick={() => setIsShowFilters(!isShowFilters)}
-          className={`flex justify-between w-full py-1 border-blue-200 ${
+          className={`flex justify-between w-full py-1 border-blue-200  ${
             isShowFilters && "border-b-2"
           }`}
         >
@@ -115,13 +118,15 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
           </div>
         </div>
         {isShowFilters && (
-          <div className="sm:relative absolute z-50 bg-[#2a2d35] px-4 sm:px-0">
+          <div
+            className={`sm:relative relative w-[90vh] z-50 bg-[#2a2d35] px-4 sm:px-0`}
+          >
             <div className="relative flex flex-wrap mt-4 pb-4 border-b-2 ">
               {genres?.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => selectedGenresHandler(item)}
-                  className={`w-[100%] lg:w-[50%] cursor-pointer hover:opacity-50
+                  className={`sm:w-[100%] px-2 lg:w-[50%] cursor-pointer hover:opacity-50
                       ${
                         selectedGenres.includes(item)
                           ? "text-orange-500"

@@ -12,7 +12,7 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({
   setIsShow,
 }) => {
   const navigate = useNavigate();
-  const closeHandler = (e: any) => {
+  const closeHandler = () => {
     setIsShow(false);
   };
   useEffect(() => {
@@ -25,14 +25,15 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={`absolute z-50 bg-[#${bgColor}] top-10 right-2 w-[500px] shadow-my p-3`}
+      className={`absolute z-50 bg-[#${bgColor}] top-10 right-2 w-full sm:w-[500px]  shadow-my p-3`}
     >
       {arrayItems.length != 0 ? (
         arrayItems.map((item) => (
           <div
-            onClick={() =>
-              navigate(`/${item.title ? "movie" : "tv"}/${item.id}`)
-            }
+            onClick={() => {
+              navigate(`/${item.title ? "movie" : "tv"}/${item.id}`);
+              closeHandler();
+            }}
             key={item.id}
             className="truncate  border-b-2 cursor-pointer hover:bg-slate-400 p-1 flex items-center"
           >

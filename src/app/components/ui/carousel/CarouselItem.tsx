@@ -26,7 +26,7 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
       }`}
     >
       <img
-        className="h-full w-full opacity-70 object-cover"
+        className="h-full w-full opacity-70 object-fill"
         src={`${httpImage}${item.backdrop_path}`}
         alt="image"
       />

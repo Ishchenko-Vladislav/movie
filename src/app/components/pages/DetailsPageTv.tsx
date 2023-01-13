@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMovieDb } from "../../hooks/useMovieDb";
 import { CreditsType, MovieById, sR, TVById } from "../../utilit/typesMovie";
 import { Layout } from "../layout/Layout";
 import YouTube from "react-youtube";
-import { IntlProvider, FormattedNumber } from "react-intl";
 export const DetailsPageTv = ({}) => {
   const API_IMAGES = "https://image.tmdb.org/t/p/w1280";
   const API_IMAGES2 = "https://image.tmdb.org/t/p/w500";
 
   const { id } = useParams();
-  const { getTvCredits, getTvByIdVideo, getMovieList } = useMovieDb();
+  const { getTvCredits, getTvByIdVideo } = useMovieDb();
   const [tv, setTv] = useState<TVById>();
   const [credits, setCredits] = useState<CreditsType>();
   const [isShowVideo, setIsShowVideo] = useState(false);
-  //   const [video, setVideo] = useState<any>();
+  const ref = useRef<HTMLDivElement>(null);
+
   const asyncHandler = async () => {
     if (id) {
-      //   const f1 = await getMovieById(id);
       const f3 = await getTvCredits(+id);
       const f2 = await getTvByIdVideo(id);
-      //   console.log(f3);
+      // console.log(f2);
       setTv(f2.data);
       setCredits(f3.data);
-      //   setVideo(f2);
     }
   };
   useEffect(() => {
@@ -36,44 +34,52 @@ export const DetailsPageTv = ({}) => {
       (vid) =>
         vid.name == "Official Trailer" ||
         vid.name == "Official Trailer [Subtitled]" ||
-        vid.name == "Dub Trailer"
+        vid.name == "Dub Trailer" ||
+        vid.name == "Official Teaser"
     );
-
-    //   ||
-    //   (tv?.videos.results[0] as sR) ||
-    //   null;
-    console.log("selected", trailer);
+    let h;
+    let w;
+    if (ref.current) {
+      w = ref.current?.offsetWidth < 640 ? ref.current?.offsetWidth : 640;
+      h = ref.current?.offsetHeight < 390 ? ref.current?.offsetHeight : 390;
+    }
+    const opts = {
+      height: h,
+      width: w,
+      playerVars: {
+        // https://developers.google.com/youtube/player_parameters
+        autoplay: 1,
+      },
+    };
     return (
-      <div className="absolute top-10 right-32">
-        <YouTube videoId={trailer?.key} />
+      <div className="absolute top-0 lg:top-10 right-0 lg:right-32">
+        <YouTube opts={opts} videoId={trailer?.key} />
       </div>
     );
   };
   return (
     <Layout>
-      <div className="mt-5">
-        <div className="w-full relative">
+      <div className="mt-5 relative">
+        <div ref={ref} className="w-full relative">
           {tv?.backdrop_path ? (
             <img
               className="object-cover  w-full h-full"
-              //   height={500}
-              //   width={}
               src={`${API_IMAGES}${tv?.backdrop_path}`}
               alt="backdrop-image"
             />
           ) : (
-            <div>not have image</div>
+            <div className="w-full h-96 text-white">not have image</div>
           )}
           <div
             onClick={() => setIsShowVideo(!isShowVideo)}
             style={{ borderWidth: 1, borderColor: "white" }}
-            className="absolute bottom-20 left-5 flex justify-center items-center  w-[100px] h-[50px] bg-[rgba(0,0,0,1)] z-50 text-white  select-none cursor-pointer border-white"
+            className="-bottom-14 absolute md:bottom-20 left-5 flex justify-center items-center  w-[100px] h-[50px] bg-[rgba(0,0,0,1)] z-40 text-white  select-none cursor-pointer border-white"
           >
             {isShowVideo ? "close" : "Play"}
           </div>
           {isShowVideo && tv?.videos ? renderTreiler() : null}
         </div>
-        <div className="text-white ">
+        <div className="text-white mt-20 md:mt-0">
           <div className=" text-4xl">{tv?.name}</div>
           <div className="flex">
             <div className="mr-3">genres:</div>
@@ -124,7 +130,7 @@ export const DetailsPageTv = ({}) => {
               .sort((item1, item2) => (item1.profile_path ? -1 : 1))
               .map((item) => (
                 <div
-                  className="w-1/6 h-[400px]  mr-3 shrink-0 overflow-hidden rounded-xl shadow-my"
+                  className="w-1/3 lg:w-1/6 sm:w-1/4 h-[300px] sm:h-[300px] md:h-[300px] lg:h-[400px] mr-3 shrink-0 overflow-hidden rounded-xl shadow-my"
                   key={item.credit_id}
                 >
                   <div className="w-full h-[80%] overflow-hidden">
