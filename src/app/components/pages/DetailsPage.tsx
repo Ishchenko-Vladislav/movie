@@ -4,7 +4,7 @@ import { useMovieDb } from "../../hooks/useMovieDb";
 import { CreditsType, MovieById, sR } from "../../utilit/typesMovie";
 import { Layout } from "../layout/Layout";
 import YouTube from "react-youtube";
-import { IntlProvider, FormattedNumber } from "react-intl";
+import { FormattedNumber } from "react-intl";
 export const DetailsPage = ({}) => {
   const API_IMAGES = "https://image.tmdb.org/t/p/w1280";
   const API_IMAGES2 = "https://image.tmdb.org/t/p/w500";
@@ -14,16 +14,12 @@ export const DetailsPage = ({}) => {
   const [movie, setMovie] = useState<MovieById>();
   const [credits, setCredits] = useState<CreditsType>();
   const [isShowVideo, setIsShowVideo] = useState(false);
-  //   const [video, setVideo] = useState<any>();
   const asyncHandler = async () => {
     if (id) {
-      //   const f1 = await getMovieById(id);
       const f2 = await getMovieByIdVideo(id);
       const f3 = await getMovieCredits(+id);
-      // console.log(f2);
       setMovie(f2.data);
       setCredits(f3.data);
-      //   setVideo(f2);
     }
   };
   useEffect(() => {
@@ -47,7 +43,7 @@ export const DetailsPage = ({}) => {
   };
   return (
     <Layout>
-      <div className="mt-5">
+      <div className="mt-5 relative">
         <div className="w-full relative">
           {movie?.backdrop_path ? (
             <img
@@ -58,7 +54,7 @@ export const DetailsPage = ({}) => {
               alt="backdrop-image"
             />
           ) : (
-            <div>not have image</div>
+            <div className="w-full h-96 text-white">not have image</div>
           )}
           <div
             onClick={() => setIsShowVideo(!isShowVideo)}
