@@ -31,8 +31,16 @@ export const HomePage = () => {
           <Carousel popularMovie={popularMovie} />
         </div>
         <div>
-          <PosterLayout title="Top Rated Movie" topRatedMovie={topRatedMovie} />
-          <PosterLayout title="Top Rated TV" topRatedMovie={topRatedTv} />
+          <PosterLayout
+            where="movie"
+            title="Top Rated Movie"
+            topRatedMovie={topRatedMovie}
+          />
+          <PosterLayout
+            where="tv"
+            title="Top Rated TV"
+            topRatedMovie={topRatedTv}
+          />
         </div>
       </div>
     </Layout>

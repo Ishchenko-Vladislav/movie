@@ -6,8 +6,13 @@ import { GenresType } from "./PosterLayout";
 type PosterItemProps = {
   item: TopRatedMovie;
   genres: GenresType[];
+  where: string;
 };
-export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
+export const PosterItem: React.FC<PosterItemProps> = ({
+  item,
+  genres,
+  where,
+}) => {
   const [s, setS] = useState("");
   const [isShowInfo, setIsShowInfo] = useState(false);
   const navigate = useNavigate();
@@ -33,7 +38,7 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
     }
   }, []);
   const click = () => {
-    navigate(`/movie/${item.id}`);
+    navigate(`/${where}/${item.id}`);
   };
   return (
     <div
