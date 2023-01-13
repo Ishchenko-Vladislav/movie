@@ -56,6 +56,7 @@ export const Carousel: React.FC<CarouselProps> = ({ popularMovie }) => {
   };
   return (
     <div className="relative w-full mt-5 h-[400px] lg:h-[600px] overflow-hidden bg-black">
+      {/* <div className="relative w-full mt-5 h-[400px] lg:h-[600px] overflow-hidden bg-black"> */}
       <ArrowButtonLeft prevSlide={prevSlide} />
       <ArrowButtonRight nextSlide={nextSlide} />
 
@@ -91,10 +92,12 @@ export const Carousel: React.FC<CarouselProps> = ({ popularMovie }) => {
 const ArrowButtonLeft = ({ prevSlide }: any) => {
   return (
     <div
-      onClick={prevSlide}
-      className={`absolute left-10 h-full flex items-center z-30 select-none`}
+      className={`absolute left-10 h-full flex items-center z-30 select-none pointer-events-none`}
     >
-      <div className="text-white pb-1 w-[40px] h-[70px] hover:bg-[rgb(0,0,0,0.5)] text-3xl cursor-pointer flex justify-center items-center">
+      <div
+        onClick={prevSlide}
+        className="text-white pb-1 w-[40px] h-[70px] hover:bg-[rgb(0,0,0,0.5)] text-3xl cursor-pointer flex justify-center items-center pointer-events-auto"
+      >
         {"<"}
       </div>
     </div>
@@ -103,10 +106,12 @@ const ArrowButtonLeft = ({ prevSlide }: any) => {
 const ArrowButtonRight = ({ nextSlide }: any) => {
   return (
     <div
-      onClick={nextSlide}
-      className={`absolute right-10 h-full  flex items-center z-30 select-none`}
+      className={`absolute right-10 h-full  flex items-center z-30 select-none pointer-events-none`}
     >
-      <div className="text-white pb-1 w-[40px] h-[70px] hover:bg-[rgb(0,0,0,0.5)] text-3xl cursor-pointer flex justify-center items-center">
+      <div
+        onClick={nextSlide}
+        className="text-white pb-1 w-[40px] h-[70px] hover:bg-[rgb(0,0,0,0.5)] text-3xl cursor-pointer flex justify-center items-center pointer-events-auto"
+      >
         {">"}
       </div>
     </div>

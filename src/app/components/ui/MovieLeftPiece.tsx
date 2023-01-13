@@ -119,7 +119,7 @@ export const MovieLeftPiece: React.FC<MovieLeftPieceProps> = ({
         </div>
         {isShowFilters && (
           <div
-            className={`sm:relative relative w-[90vh] z-50 bg-[#2a2d35] px-4 sm:px-0`}
+            className={`sm:relative relative w-[90vw] z-50 bg-[#2a2d35] px-4 sm:px-0`}
           >
             <div className="relative flex flex-wrap mt-4 pb-4 border-b-2 ">
               {genres?.map((item) => (

@@ -40,7 +40,7 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
       onClick={click}
       onMouseEnter={hoverInfo}
       onMouseLeave={() => setIsShowInfo(false)}
-      className="shrink-0 w-1/4 sm:w-1/5 flex px-4 snap-start transition-all flex-col relative"
+      className="shrink-0 w-1/2 xs:w-1/4 sm:w-1/5 flex px-4 snap-start transition-all flex-col relative"
     >
       <div className="min-w-full relative">
         <AvarageVote vote={item.vote_average} />
@@ -53,7 +53,7 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
           <div className="absolute right-0 top-0 bottom-0 left-0 bg-[rgba(0,0,0,0.8)] cursor-pointer"></div>
         )}
       </div>
-      <div className="text-white">{name}</div>
+      <div className="text-white text-xs sm:text-lg">{name}</div>
       <div className="text-white flex text-xs">
         <div>{s}</div>
         <div className="ml-2">{genreName[0]?.name}</div>
