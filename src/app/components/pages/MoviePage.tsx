@@ -1,10 +1,4 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-  useLayoutEffect,
-} from "react";
+import React, { useEffect, useState } from "react";
 import { useMovieDb } from "../../hooks/useMovieDb";
 import { MovieItems } from "../../utilit/typesMovie";
 import { Layout } from "../layout/Layout";
@@ -37,7 +31,7 @@ export const MoviePage = () => {
 
   const asyncHandler = async () => {
     const f1 = await getGenresMovie();
-    // console.log(f1.data.genres);
+
     setGenres(f1.data.genres);
   };
   const scrollHandler = (e: any) => {
@@ -49,7 +43,6 @@ export const MoviePage = () => {
       setIsFetching(true);
     }
     if (e.target.documentElement.scrollTop >= window.innerHeight) {
-      // e.target.documentElement.scrollTop = 0;
       setIsShowBack(true);
     }
     if (e.target.documentElement.scrollTop <= window.innerHeight) {
@@ -67,7 +60,6 @@ export const MoviePage = () => {
   }, []);
   useEffect(() => {
     if (isFetching) {
-      // console.log("isfetching");
       if (currentPage == totalPages) return;
       settingMovieOther().finally(() => {
         setIsFetching(false);
@@ -75,9 +67,6 @@ export const MoviePage = () => {
       setCurrentPage((prev) => prev + 1);
     }
   }, [isFetching]);
-  // useLayoutEffect(() => {
-  //   setSortBy(sortedBy[0]);
-  // }, []);
   const sortedBy = [
     { id: 0, title: "Popularity Descending", type: "popularity.desc" },
     { id: 1, title: "Popularity Ascending", type: "popularity.asc" },
@@ -93,8 +82,6 @@ export const MoviePage = () => {
       title: "Release Date Ascending",
       type: "primary_release_date.asc",
     },
-    // { id: 5, title: "Release Date Descending", type: "release_date.desc" },
-    // { id: 4, title: "Release Date Ascending", type: "release_date.asc" },
   ];
   const arrayYears = [2019, 2020, 2021, 2022, 2023];
   const where = "movie";

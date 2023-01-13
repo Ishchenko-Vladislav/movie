@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
-import React, { useEffect, useState } from "react";
-import { useMovieDb } from "../../hooks/useMovieDb";
+import React from "react";
+
 import { MovieItems } from "../../utilit/typesMovie";
 import { SortedBy } from "../pages/MoviePage";
 import { MovieItem } from "./MovieItem";
@@ -34,18 +34,6 @@ export const MovieRightPiece: React.FC<MovieRightPieceProps> = ({
   getDiscoverMovie,
   where,
 }) => {
-  // const [genres, setGenres] = useState<GenresType[]>([]);
-
-  // const { getGenres } = useMovieDb();
-
-  // const genresHandler = async () => {
-  //   const f1 = await getGenres();
-  //   setGenres(f1.data.genres);
-  // };
-
-  // useEffect(() => {
-  //   genresHandler();
-  // }, []);
   return (
     <div>
       <div>{}</div>

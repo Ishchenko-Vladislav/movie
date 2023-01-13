@@ -6,8 +6,6 @@ import { DetailsPage } from "./app/components/pages/DetailsPage";
 import { ErrorPage } from "./app/components/pages/Error";
 import { HomePage } from "./app/components/pages/HomePage";
 import { MoviePage } from "./app/components/pages/MoviePage";
-import { SearchMovie } from "./app/components/pages/SearchMovie";
-import { SearchMoviePage } from "./app/components/pages/SearchMoviePage";
 import { TVPage } from "./app/components/pages/TVPage";
 import { IntlProvider, FormattedNumber } from "react-intl";
 import "./index.css";
@@ -39,11 +37,6 @@ const router = createBrowserRouter([
     element: <DetailsPageTv />,
     errorElement: <ErrorPage />,
   },
-  // {
-  //   path: "search",
-  //   element: <SearchMoviePage />,
-  //   errorElement: <ErrorPage />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

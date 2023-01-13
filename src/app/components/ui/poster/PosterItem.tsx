@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useMovieDb } from "../../../hooks/useMovieDb";
+import { useNavigate } from "react-router-dom";
 import { TopRatedMovie, TopRatedTv } from "../../../utilit/typesMovie";
 import { AvarageVote } from "./AvarageVote";
 import { GenresType } from "./PosterLayout";
@@ -14,8 +13,6 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const httpImage = "https://image.tmdb.org/t/p/w780/";
-  const playImage =
-    "https://w7.pngwing.com/pngs/261/757/png-transparent-computer-icons-google-play-music-button-play-angle-rectangle-triangle-thumbnail.png";
   const genreName = genres.filter(
     (el, index) => el.id == item.genre_ids.find((e) => e == el.id)
   );
@@ -38,8 +35,6 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
   const click = () => {
     navigate(`/movie/${item.id}`);
   };
-  // const genreName = genres.filter((el) => el.id == item.genre_ids[0]);
-  // console.log(item.genre_ids);
   return (
     <div
       onClick={click}
@@ -55,20 +50,13 @@ export const PosterItem: React.FC<PosterItemProps> = ({ item, genres }) => {
           alt=""
         />
         {isShowInfo && (
-          <div className="absolute right-0 top-0 bottom-0 left-0 bg-[rgba(0,0,0,0.8)] cursor-pointer">
-            {/* <img className="" src={playImage} alt="play" /> */}
-          </div>
+          <div className="absolute right-0 top-0 bottom-0 left-0 bg-[rgba(0,0,0,0.8)] cursor-pointer"></div>
         )}
       </div>
       <div className="text-white">{name}</div>
       <div className="text-white flex text-xs">
         <div>{s}</div>
-        <div className="ml-2">
-          {/* {genreName.map((it) => (
-            <div key={it.id}>{it.name}</div>
-          ))} */}
-          {genreName[0]?.name}
-        </div>
+        <div className="ml-2">{genreName[0]?.name}</div>
       </div>
     </div>
   );

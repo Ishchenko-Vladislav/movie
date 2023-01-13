@@ -13,11 +13,8 @@ export const CarouselItem: React.FC<CarouselItemProps> = ({
   index,
 }) => {
   const navigate = useNavigate();
-  const { getMovieList } = useMovieDb();
   const httpImage = "https://image.tmdb.org/t/p/w1280";
   const click = async () => {
-    // const f4 = await getMovieList(item.id);
-    // console.log("author", f4);
     navigate(`/movie/${item.id}`);
   };
   return (

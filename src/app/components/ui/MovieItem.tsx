@@ -28,7 +28,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
   return (
     <Link
       to={`/${where}/${item.id}`}
-      // onClick={() => console.log(item.id)}
       onMouseEnter={hoverInfo}
       onMouseLeave={() => setIsShowInfo(false)}
       className="shrink-0 w-1/2 lg:w-1/4 md:w-1/3 px-6 py-3 "
@@ -38,7 +37,6 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           <AvarageVote vote={item.vote_average} />
           {item.poster_path ? (
             <img
-              // height={"80%"}
               className="max-w-full h-full min-w-full"
               src={`${httpImage}${item.poster_path}`}
               alt="poster"
@@ -52,7 +50,7 @@ export const MovieItem: React.FC<MovieItemProps> = ({
           )}
         </div>
         <div className="text-white px-1 text-sm">{item.title || item.name}</div>
-        {/* <div className="text-white flex text-xs"></div> */}
+
         {isShowInfo && (
           <div className="absolute right-0 top-0 left-0 bottom-0 bg-[rgba(0,0,0,0.8)] cursor-pointer p-2 select-none flex flex-col  items-center">
             <div className="text-white">

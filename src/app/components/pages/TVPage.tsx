@@ -1,10 +1,4 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-  useLayoutEffect,
-} from "react";
+import React, { useEffect, useState } from "react";
 import { useMovieDb } from "../../hooks/useMovieDb";
 import { MovieItems } from "../../utilit/typesMovie";
 import { Layout } from "../layout/Layout";
@@ -38,7 +32,7 @@ export const TVPage = () => {
   const { getGenresTV, getDiscoverTV } = useMovieDb();
   const asyncHandler = async () => {
     const f1 = await getGenresTV();
-    // console.log("f1", f1);
+
     setGenres(f1.data.genres);
   };
   const scrollHandler = (e: any) => {
@@ -47,8 +41,6 @@ export const TVPage = () => {
         (e.target.documentElement.scrollTop + window.innerHeight) <
       100
     ) {
-      //   console.log("isScrolling");
-
       setIsFetching(true);
     }
     if (e.target.documentElement.scrollTop >= window.innerHeight) {
@@ -68,7 +60,6 @@ export const TVPage = () => {
   }, []);
   useEffect(() => {
     if (isFetching) {
-      //   console.log("isfetching");
       if (currentPage == totalPages) return;
       settingMovieOther().finally(() => {
         setIsFetching(false);
@@ -76,15 +67,9 @@ export const TVPage = () => {
       setCurrentPage((prev) => prev + 1);
     }
   }, [isFetching]);
-  //   useLayoutEffect(() => {
-  //     setSortBy(sortedBy[0]);
-  //   }, []);
   useEffect(() => {
     asyncHandler();
   }, []);
-  //   useLayoutEffect(() => {
-  //     setSortBy(sortedBy[0]);
-  //   }, []);
   const sortedBy = [
     { id: 0, title: "Popularity Descending", type: "popularity.desc" },
     { id: 1, title: "Popularity Ascending", type: "popularity.asc" },
@@ -115,7 +100,6 @@ export const TVPage = () => {
         : "";
     const pageString = `&page=${page}`;
     const f1 = await getDiscoverTV(sort, year, genre, pageString);
-    // console.log(f1);
     setTotalPages(f1.data.total_pages);
     return f1.data.results;
   };

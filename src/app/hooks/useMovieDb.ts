@@ -109,14 +109,6 @@ export const useMovieDb = () => {
     });
     return res;
   };
-  // useEffect(() => {
-  //     axios({
-  //         method: 'get',
-  //         url: http,
-  //         // responseType: 'stream'
-  //       })
-  //         .then(res => console.log(res));
-  // }, [])
 
   return {
     getMovieByKeyword,

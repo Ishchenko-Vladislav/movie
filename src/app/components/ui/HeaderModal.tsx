@@ -1,11 +1,9 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from "../../assets/searchIcon.svg";
-import { MovieItems, TVItems, TVMovieItems } from "../../utilit/typesMovie";
+import { TVMovieItems } from "../../utilit/typesMovie";
 import { bgColor } from "../layout/Layout";
 type HeaderModalProps = {
-  // arrayMovie: MovieItems[];
-  // arrayTV: TVItems[];
   arrayItems: TVMovieItems[];
   setIsShow: Dispatch<SetStateAction<boolean>>;
 };
@@ -24,10 +22,6 @@ export const HeaderModal: React.FC<HeaderModalProps> = ({
       window.removeEventListener("click", closeHandler);
     };
   }, []);
-
-  //   const handle = (e: any) => {
-  //     e.stopPropagation();
-  //   };
   return (
     <div
       onClick={(e) => e.stopPropagation()}
